@@ -1,0 +1,64 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+.input-group-text {
+    border-top-left-radius: 3px !important;
+    border-bottom-left-radius: 3px !important;
+}
+
+#togglePassword:hover, #toggleCnfPassword:hover {
+    cursor: pointer;
+}
+
+.input-group .invalid-feedback {
+    margin-top: 2.8rem !important;
+}
+
+/* Start Remove arrow in input field number */
+/* Chrome, Safari, Edge, Opera */
+.remove-arrow-input-number::-webkit-outer-spin-button,
+.remove-arrow-input-number::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.remove-arrow-input-number {
+    -moz-appearance: textfield;
+}
+/* End Remove arrow in input field number */
+/* Start Add color in validation placeholder */
+
+.validation-placeholder::-webkit-input-placeholder {
+    color: #dc4c64 !important;
+}
+/* End Add color in validation placeholder */
+.gradient-custom-3 {
+    /* fallback for old browsers */
+    background: #84fab0;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5));
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(132, 250, 176, 0.5), rgba(143, 211, 244, 0.5))
+}
+
+.gradient-custom-4 {
+    /* fallback for old browsers */
+    background: #84fab0;
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1));
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(132, 250, 176, 1), rgba(143, 211, 244, 1))
+}

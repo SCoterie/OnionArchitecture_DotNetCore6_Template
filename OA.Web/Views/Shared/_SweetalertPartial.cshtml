@@ -1,0 +1,35 @@
+﻿<!--Sweetalert-->
+<link href="~/plugins/sweetalert/sweetalert2.min.css" rel="stylesheet" />
+<input type="hidden" id="hdnStatus" value="@ViewBag.status" />
+<input type="hidden" id="hdnMessage" value="@ViewBag.msg" />
+<script>
+
+    $(function(){
+        // initialize sweetalert
+        var status = $('#hdnStatus').val();
+        var msg = $('#hdnMessage').val();
+        if (status == "success") {
+            Sweetalert("success", "Success", msg); 
+        } 
+        else if (status == "failed") {
+            Sweetalert("error", "Failed", msg);
+        }
+    });
+
+    function Sweetalert(icon, title, text) {
+        Swal.fire({
+            icon: icon,
+            title: title,
+            text: text,
+            showClass: {
+                popup: 'animate__animated animate__fadeInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__fadeOutUp'
+            }
+        });
+    }
+</script>
+
+<!--Sweetalert-->
+<script src="~/plugins/sweetalert/sweetalert2.all.min.js"></script>

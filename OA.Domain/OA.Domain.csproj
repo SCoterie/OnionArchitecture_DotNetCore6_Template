@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Core\EmailService\Implementation\" />
+    <Folder Include="Core\EmailService\Interface\" />
+    <Folder Include="Core\PaymentService\Implementation\" />
+    <Folder Include="Core\PaymentService\Interface\" />
+    <Folder Include="Core\SmsService\Implementation\" />
+    <Folder Include="Core\SmsService\Interface\" />
+  </ItemGroup>
+
+</Project>

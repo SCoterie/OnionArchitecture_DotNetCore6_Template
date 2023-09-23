@@ -1,0 +1,117 @@
+﻿@{
+    Layout = null;
+}
+@model UserSignupViewModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Registration</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+
+    <!-- tel-Input -->
+    <link href="~/plugins/tel-input/intltelinput.css" rel="stylesheet" />
+
+    <!-- Site Custom -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <!-- MDB -->
+    @await Html.PartialAsync("_MDBStylesheetPartial")
+
+    <!-- default project -->
+    <link rel="stylesheet" href="~/OA.Web.styles.css" asp-append-version="true" />
+
+</head>
+<body>
+    @Html.Hidden("hdnPostData", Url.Action("Account", "Signup"))
+    <section class="vh-100 bg-image" style="background-image: url('../img/img4.webp');">
+        <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+            <div class="container h-100">
+                <div class="row d-flex justify-content-center align-items-center h-100">
+                    <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+                        <div class="card" style="border-radius: 15px;">
+                            <div class="card-body p-5">
+                                <h2 class="text-uppercase text-center mb-5">Create an account</h2>
+
+                                @using (Html.BeginForm("Signup", "Account", FormMethod.Post, new { ID = "registerFormId" }))
+                                {
+                                    @Html.AntiForgeryToken()
+                                    <div class="input-group input-group-lg form-outline mb-4">
+                                        <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-user"></i></span>
+                                        @Html.TextBoxFor(m=>m.FirstName,new{type="text",id="firstname",@class="form-control form-control-lg",tabindex="1",autocomplete="off"})
+                                        @Html.ValidationMessageFor(m=>m.FirstName,"",new{@class="text-danger"})
+                                        <label class="form-label" for="firtsname">First name</label>
+                                    </div>
+                                    <div class="input-group input-group-lg form-outline mb-4">
+                                        <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-pencil"></i></span>
+                                        @Html.TextBoxFor(m=>m.LastName,new{type="text",id="lastname",@class="form-control form-control-lg",tabindex="2",autocomplete="off"})
+                                        @Html.ValidationMessageFor(m=>m.LastName,"",new{@class="text-danger"})
+                                        <label class="form-label" for="lastname">Last name</label>
+                                    </div>
+                                    <div class="form-outline ph mb-4">
+                                        @Html.TextBoxFor(m=>m.Mobile,new{type="text",id="mobile",@class="form-control form-control-lg",tabindex="3",autocomplete="off",placeholder="Phone number",maxlength="11"})
+                                        @Html.ValidationMessageFor(m=>m.Mobile,"",new{@class="text-danger"})
+                                        @*<label class="form-label" for="mobile">Phone number</label>*@
+                                    </div>
+                                    <div class="input-group input-group-lg form-outline mb-4">
+                                        <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-envelope"></i></span>
+                                        @Html.TextBoxFor(m=>m.Email,new{type="text",id="email",@class="form-control form-control-lg",tabindex="4",autocomplete="off"})
+                                        @Html.ValidationMessageFor(m=>m.Email,"",new{@class="text-danger"})
+                                        <label class="form-label" for="email">Email address</label>
+                                    </div>
+                                    <div class="input-group input-group-lg form-outline mb-4">
+                                        <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-lock"></i></span>
+                                        @Html.TextBoxFor(m=>m.Password,new{type="password",id="password",@class="form-control form-control-lg",tabindex="5",autocomplete="off"})
+                                        <span class="input-group-text"><i class="fa fa-eye-slash" id="togglePassword"></i></span>
+                                        @Html.ValidationMessageFor(m=>m.Password,"",new{@class="text-danger"})
+                                        <label class="form-label" for="password">Password</label>
+                                    </div>
+                                    <div class="input-group input-group-lg form-outline mb-4">
+                                        <span class="input-group-text" id="inputGroup-sizing-lg"><i class="fa fa-lock"></i></span>
+                                        @Html.TextBoxFor(m=>m.CnfPassword,new{Name="cnfpassword",type="password",id="cnfpassword",@class="form-control form-control-lg",tabindex="6",autocomplete="off"})
+                                        <span class="input-group-text"><i class="fa fa-eye-slash" id="toggleCnfPassword"></i></span>
+                                        @Html.ValidationMessageFor(m=>m.CnfPassword,"",new{@class="text-danger"})
+                                        <label class="form-label" for="cnfpassword">Confirm your password</label>
+                                    </div>
+
+                                    <div class="d-flex justify-content-center">
+                                        <button type="button" class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" id="btnSubmit" tabindex="7">
+                                            Register
+                                        </button>
+                                    </div>
+
+                                    <p class="text-center text-muted mt-5 mb-0">
+                                        Have already an account? <a href="~/Account/login" class="fw-bold text-body"><u>Login here</u></a>
+                                    </p>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- jquery -->
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+
+    <!-- jquery validation -->
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <!-- MDB -->
+    <script type="text/javascript" src="~/js/mdb.min.js"></script>
+
+    <!-- User Signup Custom -->
+    <script src="~/js/user/usersignup.js"></script>
+
+    <!--For Country code Mobile number-->
+    @await Html.PartialAsync("_TelephoneInputScriptsPartial")
+
+    <!--Sweetalert-->
+    @await Html.PartialAsync("_SweetalertPartial")
+
+</body>
+</html>
